@@ -31,7 +31,7 @@ export default function EmployeeDetails() {
   const [currentPhoto, setCurrentPhoto] = useState<string>("");
 
   useEffect(() => {
-    // 1. First, look in LocalStorage
+    // 1. Сначала ищем в LocalStorage (Мгновенно)
     const savedData = localStorage.getItem("my_employees");
     let foundInStorage: Employee | undefined;
 
@@ -40,36 +40,36 @@ export default function EmployeeDetails() {
       foundInStorage = all.find(e => String(e.id) === String(id));
     }
 
-    // 2. If found in memory, take photo from there
-    if (foundInStorage && foundInStorage.imageUrl) {
-      setCurrentPhoto(foundInStorage.imageUrl);
-    } else {
-      // Запасной вариант, если фото нет (Fallback if no photo)
-      setCurrentPhoto(`https://randomuser.me/api/portraits/lego/1.jpg`);
-    }
+    // 2. Сразу ставим фото из памяти, чтобы оно не исчезало
+    const photoFromStorage = foundInStorage?.imageUrl || `https://randomuser.me/api/portraits/lego/${Number(id) % 10}.jpg`;
+    setCurrentPhoto(photoFromStorage);
 
-    // 3. Загружаем свежие данные с сервера (Fetch fresh data from server)
+    // 3. Загружаем остальные данные асинхронно
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((res) => res.json())
-      .then((data) => {
-        // Если в памяти есть этот юзер, берем его данные, если нет — дефолтные
+      .then((data: { name: string, id: number }) => {
         const displaySalary = foundInStorage ? foundInStorage.grossSalary : 4000 + data.id * 100;
-        const displayPos = foundInStorage ? foundInStorage.position : (data.id % 2 === 0 ? "Frontend" : "Backend");
+        const displayPos = foundInStorage ? foundInStorage.position : (data.id % 2 === 0 ? "Frontend" : "Backend") as Employee["position"];
+        const displayName = foundInStorage ? foundInStorage.name : data.name;
 
+        // Обновляем основной объект сотрудника
         setEmployee({
           id: data.id,
-          name: foundInStorage ? foundInStorage.name : data.name,
+          name: displayName,
           grossSalary: displaySalary,
-          position: displayPos as any,
-          imageUrl: foundInStorage?.imageUrl // сохраняем ссылку в стейт объекта
+          position: displayPos,
+          imageUrl: photoFromStorage // Используем то фото, что уже нашли
         });
 
-        setEditedName(foundInStorage ? foundInStorage.name : data.name);
+        // Синхронизируем поля редактирования
+        setEditedName(displayName);
         setEditedPosition(displayPos);
         setEditedSalary(displaySalary);
+      })
+      .catch((err: unknown) => {
+        console.error("Fetch error:", err);
       });
   }, [id]);
-
   const handleSave = () => {
     if (employee) {
       const updatedEmployee = { 

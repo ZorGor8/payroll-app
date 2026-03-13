@@ -3,7 +3,7 @@ export interface Employee {
   id: number;
   name: string;
   grossSalary: number;
-  position: "Frontend" | "Backend" | "Designer";
+  position: "Frontend" | "Backend" | "Designer" | "QA Engineer" | "PM"; 
   netSalary?: number;
   imageUrl?: string;
 }

@@ -1,7 +1,6 @@
 //src/pages/AnaliticsPage.tsx
 
 //Importing componetns:
-import Header from "../components/Header";
 import HistoryChart from "../components/HistoryChart";
 import { Link } from "react-router-dom";
 
