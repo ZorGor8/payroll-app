@@ -1,6 +1,6 @@
 /* src/App.css */
 
-/* Global Reset (Глобальный сброс) */
+/* Global Reset */
 body {
   background-color: #f0f2f5;
   margin: 0;
@@ -14,7 +14,7 @@ body {
   padding: 20px !important;
   box-sizing: border-box;
 }
-/* Input Styles (Стили инпутов) */
+/* Input Styles  */
 input, select {
   padding: 10px;
   border: 1px solid #ddd;
@@ -23,7 +23,7 @@ input, select {
   font-size: 14px;
 }
 
-/* Button Style (Стиль кнопки) */
+/* Button Style  */
 button {
   background-color: #007bff;
   color: rgb(15, 14, 14);
@@ -38,16 +38,6 @@ button {
 button:hover {
   background-color: #60a0e6;
 }
-
-/* Employee Item Style (Стиль элемента сотрудника) */
-/* .employee-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.2s;
-} */
 
 .employee-card:hover {
   background-color: #f9f9f9;
@@ -99,15 +89,13 @@ button:hover {
   100% { transform: rotate(360deg); }
 }
 
-/* 1. Background that covers the entire application */
-/* 1. Background (Overlay) — Делаем темнее (Making it darker) */
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Изменили прозрачность с 0.5 на 0.7 для большего контраста */
   background: rgba(0, 0, 0, 0.7); 
   display: flex;
   justify-content: center;
@@ -115,95 +103,90 @@ button:hover {
   z-index: 1000;
 }
 
-/* 2. Modal Box — Добавляем объема (Adding volume) */
+
 .modal-content {
   background: white;
-  padding: 30px; /* Увеличили отступы для солидности */
-  border-radius: 12px; /* Более мягкие углы */
+  padding: 30px;
+  border-radius: 12px; 
   max-width: 400px;
   width: 90%;
-  /* Усилили тень: теперь она глубже и мягче */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
-  /* Добавили тонкую рамку, чтобы окно не сливалось с фоном */
   border: 1px solid #ddd; 
-  text-align: center; /* Центрируем текст и кнопки */
+  text-align: center; 
 }
 
 .progress-bar-background {
   width: 100%;
   height: 12px;
-  background-color: #e0e0e0; /* Light gray (Светло-серый) */
+  background-color: #e0e0e0; 
   border-radius: 6px;
   margin: 10px 0;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #28a745; /* Green (Зеленый) */
+  background-color: #28a745; 
   border-radius: 6px;
-  transition: width 0.3s ease-in-out; /* Smooth movement (Плавное движение) */
+  transition: width 0.3s ease-in-out; 
 }
 
-/* Стандартный вид (Default) */
+
 .app-wrapper {
   min-height: 100vh;
-  background-color: #f0f2f5; /* Светлый фон */
+  background-color: #f0f2f5; 
   color: #333;
   transition: background-color 0.3s ease;
 }
 
-/* Вид при включенной теме (When dark-theme class is active) */
+
 .dark-theme {
-  background-color: #1a1a1a; /* Темный фон */
+  background-color: #1a1a1a; 
   color: #ffffff;
 }
 
-/* Опционально: сделай карточки тоже темными */
+
 .dark-theme .container, 
 .dark-theme .modal-content {
   background-color: #2d2d2d;
   color: white;
   border-color: #444;
 }
-/* 1. Этот класс растягивает темный фон на ВЕСЬ экран */
-/* (This class stretches the dark background to the WHOLE screen) */
+
 .analytics-page-wrapper {
-  width: 100vw;              /* 100% ширины окна (100% of viewport width) */
-  min-height: 100vh;         /* 100% высоты окна (100% of viewport height) */
-  background-color: #121212; /* (Deep dark color) */
+  width: 100vw;              
+  min-height: 100vh;         
+  background-color: #121212; 
   margin: 0;
   padding: 40px;
   box-sizing: border-box;
-  position: absolute;        /* (Break out of normal flow) */
+  position: absolute;        
   top: 0;
   left: 0;
 }
 
-/* 2. Контент внутри (Content inside) */
+
 .analytics-content {
-  max-width: 1200px;         /* Ограничиваем контент, чтобы он не разъехался слишком сильно */
-  margin: 0 auto;            /* Центрируем (Center it) */
+  max-width: 1200px;         
+  margin: 0 auto;            
 }
 
-/* 3. Обертка для самого графика (Wrapper for the chart itself) */
 .chart-container-huge {
   width: 100%;
-  height: 500px;             /* Большая высота (Big height) */
-  background: #1e1e1e;       /* Чуть светлее фона для объема (Slightly lighter than background) */
+  height: 500px;            
+  background: #1e1e1e;       
   border-radius: 20px;
   padding: 20px;
   margin-top: 30px;
-  border: 1px solid #333;    /* Тонкая рамка (Subtle border) */
+  border: 1px solid #333;   
 }
 
 .analytics-title {
-  color: white;              /* Текст должен быть белым (Text must be white) */
+  color: white;           
   font-size: 2.5rem;
 }
 
 .employee-grid {
   display: grid !important;
-  /* Ставим 300px как минимум, чтобы карточки не были слишком узкими */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
   gap: 25px !important;
   width: 100% !important;
@@ -216,7 +199,6 @@ button:hover {
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  /* Чтобы карточки были одной высоты */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

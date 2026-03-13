@@ -30,7 +30,6 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  /* Убираем flex и place-items, чтобы контент мог свободно дышать */
 }
 
 h1 {

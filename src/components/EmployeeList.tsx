@@ -24,11 +24,10 @@ export default function EmployeeList({
     <div className="employee-grid"> 
       {employees.map((emp) => (
         <div key={emp.id} className="employee-card">
-          
-          {/* 1. ШАПКА КАРТОЧКИ: Фото + Имя + Должность */}
+         
           <div className="card-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
             
-            {/* АВАТАР С ЛОГИКОЙ РЕЗЕРВА (Avatar with Fallback Logic) */}
+          
             <div className="avatar" style={{ flexShrink: 0 }}>
               {emp.imageUrl ? (
                 <img 
@@ -42,7 +41,7 @@ export default function EmployeeList({
                     display: 'block',
                     border: '1px solid #eee'
                   }}
-                  // Если фото не загрузится, скроем его, чтобы показать букву
+                 
                   onError={(e) => { e.currentTarget.style.display = 'none'; }} 
                 />
               ) : (
@@ -78,8 +77,7 @@ export default function EmployeeList({
             </div>
           </div>
 
-          {/* 2. ТЕЛО КАРТОЧКИ: Финансы */}
-          {/* 2. ТЕЛО КАРТОЧКИ: Финансы (Заполняем пустоту) */}
+        
 <div className="card-body" style={{ 
   margin: '15px 0', 
   padding: '12px', 
@@ -109,7 +107,7 @@ export default function EmployeeList({
   </div>
 </div>
 
-          {/* 3. КНОПКИ: Действия */}
+       
           <div className="card-actions" style={{ display: 'flex', gap: '8px' }}>
             <button className="bonus-btn" onClick={() => onBonus(emp.id, 500)}>
               + $500 Bonus

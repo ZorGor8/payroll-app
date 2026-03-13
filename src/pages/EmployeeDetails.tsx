@@ -31,7 +31,7 @@ export default function EmployeeDetails() {
   const [currentPhoto, setCurrentPhoto] = useState<string>("");
 
   useEffect(() => {
-    // 1. Сначала ищем в LocalStorage (Мгновенно)
+    
     const savedData = localStorage.getItem("my_employees");
     let foundInStorage: Employee | undefined;
 
@@ -40,11 +40,11 @@ export default function EmployeeDetails() {
       foundInStorage = all.find(e => String(e.id) === String(id));
     }
 
-    // 2. Сразу ставим фото из памяти, чтобы оно не исчезало
+    
     const photoFromStorage = foundInStorage?.imageUrl || `https://randomuser.me/api/portraits/lego/${Number(id) % 10}.jpg`;
     setTimeout(() => setCurrentPhoto(photoFromStorage), 0);
 
-    // 3. Загружаем остальные данные асинхронно
+    
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((res) => res.json())
       .then((data: { name: string, id: number }) => {
@@ -52,16 +52,16 @@ export default function EmployeeDetails() {
         const displayPos = foundInStorage ? foundInStorage.position : (data.id % 2 === 0 ? "Frontend" : "Backend") as Employee["position"];
         const displayName = foundInStorage ? foundInStorage.name : data.name;
 
-        // Обновляем основной объект сотрудника
+        
         setEmployee({
           id: data.id,
           name: displayName,
           grossSalary: displaySalary,
           position: displayPos,
-          imageUrl: photoFromStorage // Используем то фото, что уже нашли
+          imageUrl: photoFromStorage 
         });
 
-        // Синхронизируем поля редактирования
+        
         setEditedName(displayName);
         setEditedPosition(displayPos);
         setEditedSalary(displaySalary);
@@ -77,7 +77,7 @@ export default function EmployeeDetails() {
         name: editedName, 
        position: editedPosition as Employee["position"],
         grossSalary: editedSalary,
-        imageUrl: currentPhoto // Важно: сохраняем то же фото!
+        imageUrl: currentPhoto 
       };
 
       const savedData = localStorage.getItem("my_employees");
@@ -127,7 +127,7 @@ export default function EmployeeDetails() {
         gap: '40px'
       }}>
         
-        {/* ЛЕВАЯ КОЛОНКА: Фото */}
+        
         <div style={{ textAlign: 'center' }}>
           <div style={{ 
             width: '250px', 
@@ -147,7 +147,7 @@ export default function EmployeeDetails() {
           <h2 style={{ margin: '0', fontSize: '1.2rem', opacity: 0.7 }}>Employee ID: {employee.id}</h2>
         </div>
 
-        {/* ПРАВАЯ КОЛОНКА: Информация */}
+   
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           
           <div style={{ marginBottom: '25px' }}>

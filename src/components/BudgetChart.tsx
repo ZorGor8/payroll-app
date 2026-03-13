@@ -43,7 +43,7 @@ return (
     </div>
     
     <p style={{ fontSize: '12px' }}>Taxes: {formatCurrency(taxAmount)}</p>
-  </div> // <-- НЕ ЗАБУДЬ ЗАКРЫТЬ ГЛАВНЫЙ DIV (DON'T FORGET TO CLOSE THE MAIN DIV)
+  </div> 
 );
 }
 export default BudgetChart;

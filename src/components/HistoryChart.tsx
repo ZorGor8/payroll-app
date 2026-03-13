@@ -27,7 +27,7 @@ export default function HistoryChart() {
         <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#333" />
       <XAxis 
   dataKey="month" 
-  // Показывать каждую 3-ю точку, чтобы не перегружать экран
+
   interval={3} 
   tick={{ fill: '#999', fontSize: 10 }}
   axisLine={false}
@@ -36,13 +36,12 @@ export default function HistoryChart() {
         <YAxis stroke="#999" />
         <Tooltip />
 
-        {/* КИРПИЧ 2: Применяем градиент к области (Applying gradient to the area) */}
         <Area 
           type="monotone" 
           dataKey="total" 
           stroke="#8884d8" 
           fillOpacity={1} 
-          fill="url(#colorTotal)" // Связываем с ID градиента выше
+          fill="url(#colorTotal)" 
         />
         
       </AreaChart>

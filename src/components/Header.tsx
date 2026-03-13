@@ -53,7 +53,7 @@ const Header = ({ totalGross, totalNet, count }: HeaderProps) => {
         </div>
       </div>
 
-      {/* ПРАВАЯ ЧАСТЬ: Иконки и ссылки */}
+     
       <div style={{ textAlign: 'right', paddingTop: '10px' }}>
         <div style={{ display: 'flex', gap: '20px', justifyContent: 'flex-end', marginBottom: '10px' }}>
           <a href="#" style={{ color: '#333' }}><Globe size={32} strokeWidth={1.5} /></a>
