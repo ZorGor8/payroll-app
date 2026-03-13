@@ -42,7 +42,7 @@ export default function EmployeeDetails() {
 
     // 2. Сразу ставим фото из памяти, чтобы оно не исчезало
     const photoFromStorage = foundInStorage?.imageUrl || `https://randomuser.me/api/portraits/lego/${Number(id) % 10}.jpg`;
-    setCurrentPhoto(photoFromStorage);
+    setTimeout(() => setCurrentPhoto(photoFromStorage), 0);
 
     // 3. Загружаем остальные данные асинхронно
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
@@ -75,7 +75,7 @@ export default function EmployeeDetails() {
       const updatedEmployee = { 
         ...employee, 
         name: editedName, 
-        position: editedPosition as any, 
+       position: editedPosition as Employee["position"],
         grossSalary: editedSalary,
         imageUrl: currentPhoto // Важно: сохраняем то же фото!
       };
