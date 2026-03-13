@@ -1,0 +1,223 @@
+/* src/App.css */
+
+/* Global Reset (Глобальный сброс) */
+body {
+  background-color: #f0f2f5;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  width: 98% !important; 
+  max-width: 1800px !important; 
+  margin: 10px auto !important;
+  padding: 20px !important;
+  box-sizing: border-box;
+}
+/* Input Styles (Стили инпутов) */
+input, select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+/* Button Style (Стиль кнопки) */
+button {
+  background-color: #007bff;
+  color: rgb(15, 14, 14);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #60a0e6;
+}
+
+/* Employee Item Style (Стиль элемента сотрудника) */
+/* .employee-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+} */
+
+.employee-card:hover {
+  background-color: #f9f9f9;
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+.bonus-btn {
+  background-color: #28a745;
+  margin-left: 10px;
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .employee-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 1. Background that covers the entire application */
+/* 1. Background (Overlay) — Делаем темнее (Making it darker) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Изменили прозрачность с 0.5 на 0.7 для большего контраста */
+  background: rgba(0, 0, 0, 0.7); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 2. Modal Box — Добавляем объема (Adding volume) */
+.modal-content {
+  background: white;
+  padding: 30px; /* Увеличили отступы для солидности */
+  border-radius: 12px; /* Более мягкие углы */
+  max-width: 400px;
+  width: 90%;
+  /* Усилили тень: теперь она глубже и мягче */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
+  /* Добавили тонкую рамку, чтобы окно не сливалось с фоном */
+  border: 1px solid #ddd; 
+  text-align: center; /* Центрируем текст и кнопки */
+}
+
+.progress-bar-background {
+  width: 100%;
+  height: 12px;
+  background-color: #e0e0e0; /* Light gray (Светло-серый) */
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #28a745; /* Green (Зеленый) */
+  border-radius: 6px;
+  transition: width 0.3s ease-in-out; /* Smooth movement (Плавное движение) */
+}
+
+/* Стандартный вид (Default) */
+.app-wrapper {
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Светлый фон */
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+/* Вид при включенной теме (When dark-theme class is active) */
+.dark-theme {
+  background-color: #1a1a1a; /* Темный фон */
+  color: #ffffff;
+}
+
+/* Опционально: сделай карточки тоже темными */
+.dark-theme .container, 
+.dark-theme .modal-content {
+  background-color: #2d2d2d;
+  color: white;
+  border-color: #444;
+}
+/* 1. Этот класс растягивает темный фон на ВЕСЬ экран */
+/* (This class stretches the dark background to the WHOLE screen) */
+.analytics-page-wrapper {
+  width: 100vw;              /* 100% ширины окна (100% of viewport width) */
+  min-height: 100vh;         /* 100% высоты окна (100% of viewport height) */
+  background-color: #121212; /* (Deep dark color) */
+  margin: 0;
+  padding: 40px;
+  box-sizing: border-box;
+  position: absolute;        /* (Break out of normal flow) */
+  top: 0;
+  left: 0;
+}
+
+/* 2. Контент внутри (Content inside) */
+.analytics-content {
+  max-width: 1200px;         /* Ограничиваем контент, чтобы он не разъехался слишком сильно */
+  margin: 0 auto;            /* Центрируем (Center it) */
+}
+
+/* 3. Обертка для самого графика (Wrapper for the chart itself) */
+.chart-container-huge {
+  width: 100%;
+  height: 500px;             /* Большая высота (Big height) */
+  background: #1e1e1e;       /* Чуть светлее фона для объема (Slightly lighter than background) */
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 30px;
+  border: 1px solid #333;    /* Тонкая рамка (Subtle border) */
+}
+
+.analytics-title {
+  color: white;              /* Текст должен быть белым (Text must be white) */
+  font-size: 2.5rem;
+}
+
+.employee-grid {
+  display: grid !important;
+  /* Ставим 300px как минимум, чтобы карточки не были слишком узкими */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  gap: 25px !important;
+  width: 100% !important;
+  padding: 20px 0 !important;
+}
+
+.employee-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  /* Чтобы карточки были одной высоты */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
